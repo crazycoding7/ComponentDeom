@@ -1,10 +1,17 @@
-apply plugin: 'com.android.library'
+if(Integer.parseInt(runModule) == 3){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+        if(Integer.parseInt(runModule) == 3) {
+            applicationId "com.alex.c_login"
+        }
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -24,6 +31,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    if (Integer.valueOf(runModule) == 3) {
+
+        sourceSets {
+            main {
+                //每个源集只能有一个AndroidManifest.xml清单文件
+                //默认情况下，main源集的清单文件在src/main/ 目录中。
+                manifest.srcFile 'src/manifest/AndroidManifest.xml'
+            }
         }
     }
 }

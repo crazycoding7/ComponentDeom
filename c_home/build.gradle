@@ -3,7 +3,6 @@ if(Integer.parseInt(runModule) == 2){
 }else {
     apply plugin: 'com.android.library'
 }
-        ''
 
 android {
     compileSdkVersion 30
