@@ -1,11 +1,16 @@
-apply plugin: 'com.android.library'
-
+if(Integer.parseInt(runModule) == 1){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-       // applicationId "com.alex.componentdemo"
+        if(Integer.parseInt(runModule) == 1) {
+            applicationId "com.alex.componentdemo"
+        }
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -26,6 +31,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':c_home')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
