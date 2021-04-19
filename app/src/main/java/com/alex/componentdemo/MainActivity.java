@@ -2,11 +2,12 @@ package com.alex.componentdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.alex.c_home.HomeActivity;
+import com.alex.c_platform.constant.RouterActivityPath;
+import com.alibaba.android.arouter.launcher.ARouter;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,8 +23,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_main_jump_home).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
+                ARouter.getInstance().build(RouterActivityPath.Home.PAGER_Home).navigation();
+            }
+        });
+
+        findViewById(R.id.btn_main_jump_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance().build(RouterActivityPath.Login.PAGER_Login).navigation();
             }
         });
     }
